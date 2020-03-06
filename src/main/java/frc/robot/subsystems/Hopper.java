@@ -16,8 +16,8 @@ public class Hopper extends SubsystemBase {
     lower = lowerHopper;
     upper.setInverted(true);
     lower.setInverted(false);
-    upper.setVoltage(11);
-    lower.setVoltage(11);
+    upper.enableVoltageCompensation(12);
+    lower.enableVoltageCompensation(12);
   }
   @Override
   public void periodic() {

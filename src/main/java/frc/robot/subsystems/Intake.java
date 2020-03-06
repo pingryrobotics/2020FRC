@@ -10,7 +10,7 @@ public class Intake extends SubsystemBase {
    */
   public Intake(CANSparkMax rollerSpark) {
     roller = rollerSpark;
-    roller.setVoltage(11);
+    roller.enableVoltageCompensation(12);
   }
   @Override
   public void periodic() {

@@ -28,8 +28,8 @@ public class Shooter extends SubsystemBase {
     leadScrew.setVoltage(11);
     leftFlywheel.setInverted(true);
     rightFlywheel.setInverted(false);
-    leftFlywheel.setVoltage(11);
-    rightFlywheel.setVoltage(11);
+    leftFlywheel.enableVoltageCompensation(12);
+    rightFlywheel.enableVoltageCompensation(12);
   }
   @Override
   public void periodic() {

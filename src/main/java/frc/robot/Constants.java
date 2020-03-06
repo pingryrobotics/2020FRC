@@ -19,7 +19,7 @@ public final class Constants {
     public static final int kRightShooterId = 26;
     public static final int kLeftShooterId = 27;
     public static final int kRightDriveOneId = 21;
-    public static final int kRightDriveTwoId = 22; 
+    public static final int kRightDriveTwoId = 22;
     public static final int kLeftDriveOneId = 23;
     public static final int kLeftDriveTwoId = 24;
     public static final int kIntakeId = 25;
@@ -28,4 +28,5 @@ public final class Constants {
     public static final int kLiftId = 28;
     public static final double kHopperSpeed = .7;
     public static final double kIntakeSpeed = .8;
+    public static final double kImageCaptureLatency = 11.0 / 1000.0;
 }
