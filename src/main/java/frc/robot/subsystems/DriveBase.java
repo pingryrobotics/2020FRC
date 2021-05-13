@@ -14,27 +14,32 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 public class DriveBase extends SubsystemBase {
     private SpeedControllerGroup right;
     private SpeedControllerGroup left;
-    private CANSparkMax rightOne;
-    private CANSparkMax rightTwo;
-    private CANSparkMax leftOne;
-    private CANSparkMax leftTwo;
+    CANSparkMax frontRight;
+    CANSparkMax frontLeft;
+    CANSparkMax backRight;
+    CANSparkMax backLeft;
     /**
     * Creates a new DriveTrain.
     */
-    public DriveBase(CANSparkMax rightA, CANSparkMax rightB, CANSparkMax leftA, CANSparkMax leftB) {
-        rightOne = rightA;
-        rightTwo = rightB;
-        leftOne = leftA;
-        leftTwo = leftB;
-        rightOne.enableVoltageCompensation(12);
-        rightTwo.enableVoltageCompensation(12);
-        leftOne.enableVoltageCompensation(12);
-        leftTwo.enableVoltageCompensation(12);
-        rightTwo.follow(rightOne);
-        leftTwo.follow(leftOne);
-        right = new SpeedControllerGroup(rightOne,rightTwo);
-        left = new SpeedControllerGroup(leftOne,leftTwo);
+    public DriveBase() {
+		frontRight = new CANSparkMax(RobotMap.frontRightID, MotorType.kBrushless);
+        frontLeft = new CANSparkMax(RobotMap.frontLeftID, MotorType.kBrushless);
+        backLeft = new CANSparkMax(RobotMap.backLeftID, MotorType.kBrushless);
+        backRight = new CANSparkMax(RobotMap.backRightID, MotorType.kBrushless);
+        frontRight.enableVoltageCompensation(12);
+        backRight.enableVoltageCompensation(12);
+        frontLeft.enableVoltageCompensation(12);
+        backLeft.enableVoltageCompensation(12);
+        backRight.follow(frontRight);
+        backLeft.follow(frontLeft);
+        right = new SpeedControllerGroup(frontRight, backRight);
+        left = new SpeedControllerGroup(frontLeft, backLeft);
     }
+
+	public void move(double leftPow, double rightPow) {
+		frontRight.set(-rightPow);
+		frontLeft.set(leftPow);
+	}
 
     @Override
     public void periodic() {
