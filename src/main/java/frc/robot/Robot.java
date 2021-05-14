@@ -11,6 +11,10 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -21,6 +25,9 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  private final Shooter m_shooter; 
+  private final Hopper m_hopper;
+  private final Intake m_intake;
 
   public static DriveBase driveBase;
 
@@ -33,7 +40,10 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-	driveBase = new DriveBase();
+	  driveBase = new DriveBase();
+    m_shooter = new Shooter(new CANSparkMax(Constants.kLeftShooterId, MotorType.kBrushless), new CANSparkMax(Constants.kRightShooterId, MotorType.kBrushless),new CANSparkMax(Constants.kLiftId,MotorType.kBrushless));
+    m_hopper = new Hopper(new CANSparkMax(Constants.kHopperLowerId, MotorType.kBrushless),new CANSparkMax(Constants.kHopperUpperId, MotorType.kBrushless));
+    m_intake = new Intake(new CANSparkMax(Constants.kIntakeId, MotorType.kBrushless));
   }
 
   /**
@@ -107,6 +117,7 @@ public class Robot extends TimedRobot {
   public void testInit() {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
+    new ToggleHopper(m_hopper);
   }
 
   /**
