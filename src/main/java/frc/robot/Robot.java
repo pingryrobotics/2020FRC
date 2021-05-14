@@ -110,14 +110,13 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();
-	driveBase.move(0.05, 0.05);
+	  //driveBase.move(0.05, 0.05);
   }
 
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
-    new ToggleHopper(m_hopper);
   }
 
   /**
@@ -125,5 +124,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    new ToggleIntake(m_intake);
+    new ToggleHopper(m_hopper);
+    new ChangeShooterSpeed(m_shooter, 0.2);
   }
 }

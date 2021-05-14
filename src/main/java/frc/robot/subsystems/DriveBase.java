@@ -8,6 +8,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.revrobotics.CANSparkMax;
+
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
@@ -22,10 +24,10 @@ public class DriveBase extends SubsystemBase {
     * Creates a new DriveTrain.
     */
     public DriveBase() {
-		frontRight = new CANSparkMax(RobotMap.frontRightID, MotorType.kBrushless);
-        frontLeft = new CANSparkMax(RobotMap.frontLeftID, MotorType.kBrushless);
-        backLeft = new CANSparkMax(RobotMap.backLeftID, MotorType.kBrushless);
-        backRight = new CANSparkMax(RobotMap.backRightID, MotorType.kBrushless);
+		frontRight = new CANSparkMax(Constants.kRightDriveOneId, MotorType.kBrushless);
+        frontLeft = new CANSparkMax(Constants.kLeftDriveOneId, MotorType.kBrushless);
+        backLeft = new CANSparkMax(Constants.kLeftDriveTwoId, MotorType.kBrushless);
+        backRight = new CANSparkMax(Constants.kRightDriveTwoId, MotorType.kBrushless);
         frontRight.enableVoltageCompensation(12);
         backRight.enableVoltageCompensation(12);
         frontLeft.enableVoltageCompensation(12);
