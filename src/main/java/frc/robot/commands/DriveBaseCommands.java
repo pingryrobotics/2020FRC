@@ -13,7 +13,7 @@ public class DriveBaseCommands extends CommandBase{
     /**
      * Drive commands for tank drive using joysticks
      */
-    public DriveBaseCommands(DriveBase m_subsystem){
+    public DriveBaseCommands(DriveBase subsystem){
         m_subsystem = subsystem;
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(subsystem);
@@ -25,22 +25,22 @@ public class DriveBaseCommands extends CommandBase{
 
     public void execute(){
         //Allows us to slow down driving as necessary.
-        double driveFactor = Robot.RobotContainer.drive1.getRawAxis(2);
+        double driveFactor = Robot.m_robotContainer.m_driverController2.getRawAxis(2);
         double leftPow = 0;
         double rightPow = 0;
         //Fine motor controls
-        if(Robot.RobotContainer.drive2.getRawButton(3)){
+        if(Robot.m_robotContainer.m_driverController3.getRawButton(3)){
             
-        }else if(Robot.RobotContainer.drive2.getRawButton(2)){
+        }else if(Robot.m_robotContainer.m_driverController3.getRawButton(2)){
             leftPow = -0.05;
             rightPow = -0.05;
-        }else if(Robot.oi.drive1.getRawButton(11) || Robot.RobotContainer.drive2.getRawButton(5)){
+        }else if(Robot.m_robotContainer.m_driverController3.getRawButton(11) || Robot.m_robotContainer.m_driverController3.getRawButton(5)){
             leftPow = 0.15;
             rightPow = 0.15;
-        }else if(Robot.oi.drive1.getRawButton(10) || Robot.RobotContainer.drive2.getRawButton(4)){
+        }else if(Robot.m_robotContainer.m_driverController3.getRawButton(10) || Robot.m_robotContainer.m_driverController3.getRawButton(4)){
             leftPow = -0.15;
             rightPow = -0.15;
-        }else if (Robot.RobotContainer.drive2.getRawButton(1)){
+        }else if (Robot.m_robotContainer.m_driverController3.getRawButton(1)){
             double tx = Robot.tx.getDouble(0);
             double pMod = tx*pTurn;
             
@@ -55,8 +55,8 @@ public class DriveBaseCommands extends CommandBase{
             //Robot.aPrevError = tx;
         }else{
             //Regular move
-            leftPow = -Math.pow(Robot.RobotContainer.drive2.getRawAxis(1),1)*driveFactor;
-            rightPow = -Math.pow(Robot.RobotContainer.drive1.getRawAxis(1),1)*driveFactor;
+            leftPow = -Math.pow(Robot.m_robotContainer.m_driverController3.getRawAxis(1),1)*driveFactor;
+            rightPow = -Math.pow(Robot.m_robotContainer.m_driverController2.getRawAxis(1),1)*driveFactor;
         }
         m_subsystem.move(leftPow,rightPow);
     }

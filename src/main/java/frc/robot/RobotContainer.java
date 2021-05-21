@@ -36,7 +36,9 @@ public class RobotContainer {
   private final Hopper m_hopper = new Hopper(new CANSparkMax(Constants.kHopperLowerId, MotorType.kBrushless),new CANSparkMax(Constants.kHopperUpperId, MotorType.kBrushless));
   private final Intake m_intake = new Intake(new CANSparkMax(Constants.kIntakeId, MotorType.kBrushless));
   private final DriveBase m_driveBase = new DriveBase();
-  public Joystick m_driverController = new Joystick(0);
+  public Joystick m_driverController1 = new Joystick(0);
+  public Joystick m_driverController2 = new Joystick(1);
+  public Joystick m_driverController3 = new Joystick(2);
 
 
   /**
@@ -53,13 +55,13 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(m_driverController, 1).whenPressed(new ChangeShooterDirection(m_shooter));
-    new JoystickButton(m_driverController, 2).whenPressed(new ChangeShooterSpeed(m_shooter,0));
-    new JoystickButton(m_driverController, 3).whenPressed(new ChangeShooterSpeed(m_shooter,.5));
-    new JoystickButton(m_driverController, 4).whenPressed(new ChangeShooterSpeed(m_shooter,.7));
-    new JoystickButton(m_driverController, 5).whenPressed(new ChangeShooterSpeed(m_shooter,.8));
-    new JoystickButton(m_driverController,11).whenPressed(new ToggleHopper(m_hopper));
-    new JoystickButton(m_driverController,10).whenPressed(new ToggleIntake(m_intake));
+    new JoystickButton(m_driverController1, 1).whenPressed(new ChangeShooterDirection(m_shooter));
+    new JoystickButton(m_driverController1, 2).whenPressed(new ChangeShooterSpeed(m_shooter,0));
+    new JoystickButton(m_driverController1, 3).whenPressed(new ChangeShooterSpeed(m_shooter,.5));
+    new JoystickButton(m_driverController1, 4).whenPressed(new ChangeShooterSpeed(m_shooter,.7));
+    new JoystickButton(m_driverController1, 5).whenPressed(new ChangeShooterSpeed(m_shooter,.8));
+    new JoystickButton(m_driverController1,11).whenPressed(new ToggleHopper(m_hopper));
+    new JoystickButton(m_driverController1,10).whenPressed(new ToggleIntake(m_intake));
   }
 
 
