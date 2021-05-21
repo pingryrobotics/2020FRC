@@ -37,7 +37,7 @@ public class RobotContainer {
   private final Hopper m_hopper = new Hopper(new CANSparkMax(Constants.kHopperLowerId, MotorType.kBrushless),new CANSparkMax(Constants.kHopperUpperId, MotorType.kBrushless));
   private final Intake m_intake = new Intake(new CANSparkMax(Constants.kIntakeId, MotorType.kBrushless));
   public final DriveBase driveBase = new DriveBase();
-  Joystick m_driverController = new Joystick(0);
+  public final Joystick m_driverController = new Joystick(0);
 
 
   /**
