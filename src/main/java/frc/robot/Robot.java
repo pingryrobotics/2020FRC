@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-	  m_driveBase = new DriveBase();
+	m_driveBase = new DriveBase();
     m_shooter = new Shooter(new CANSparkMax(Constants.kLeftShooterId, MotorType.kBrushless), new CANSparkMax(Constants.kRightShooterId, MotorType.kBrushless),new CANSparkMax(Constants.kLiftId,MotorType.kBrushless));
     m_hopper = new Hopper(new CANSparkMax(Constants.kHopperLowerId, MotorType.kBrushless),new CANSparkMax(Constants.kHopperUpperId, MotorType.kBrushless));
     m_intake = new Intake(new CANSparkMax(Constants.kIntakeId, MotorType.kBrushless));
@@ -138,6 +138,5 @@ public class Robot extends TimedRobot {
     //new ToggleIntake(m_intake);
     new ToggleHopper(m_hopper);
     new ChangeShooterSpeed(m_shooter, 0.2);
-	  new MoveRobot(m_driveBase, 0.05, 0.05);
   }
 }
