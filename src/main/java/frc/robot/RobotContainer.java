@@ -35,8 +35,8 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter(new CANSparkMax(Constants.kLeftShooterId, MotorType.kBrushless), new CANSparkMax(Constants.kRightShooterId, MotorType.kBrushless),new CANSparkMax(Constants.kLiftId,MotorType.kBrushless));
   private final Hopper m_hopper = new Hopper(new CANSparkMax(Constants.kHopperLowerId, MotorType.kBrushless),new CANSparkMax(Constants.kHopperUpperId, MotorType.kBrushless));
   private final Intake m_intake = new Intake(new CANSparkMax(Constants.kIntakeId, MotorType.kBrushless));
-  public final DriveBase driveBase = new DriveBase();
-  Joystick m_driverController = new Joystick(0);
+  private final DriveBase m_driveBase = new DriveBase();
+  public Joystick m_driverController = new Joystick(0);
 
 
   /**

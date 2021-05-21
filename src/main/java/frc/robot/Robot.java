@@ -109,6 +109,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();
+	double degrees = m_robotContainer.m_robotController.getDirectionDegrees(); // api methods for retrieving info from joystick
+	double magnitude = m_robotContainer.m_robotController.getMagnitude(); 
+	
   }
 
   @Override
