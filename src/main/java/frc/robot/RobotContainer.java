@@ -18,6 +18,7 @@ import frc.robot.commands.ChangeShooterSpeed;
 import frc.robot.commands.ToggleHopper;
 import frc.robot.commands.ToggleIntake;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Intake;
 import frc.robot.Constants;
@@ -54,7 +55,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     new JoystickButton(m_driverController, 1).whenPressed(new ChangeShooterDirection(m_shooter));
-    new JoystickButton(m_driverController, 2).whenPressed(new ChangeShooterSpeed(m_shooter,0));
+    new JoystickButton(m_driverController, 2).whenPressed(new ChangeShooterSpeed(m_shooter, 0));
     new JoystickButton(m_driverController, 3).whenPressed(new ChangeShooterSpeed(m_shooter,.5));
     new JoystickButton(m_driverController, 4).whenPressed(new ChangeShooterSpeed(m_shooter,.7));
     new JoystickButton(m_driverController, 5).whenPressed(new ChangeShooterSpeed(m_shooter,.8));
