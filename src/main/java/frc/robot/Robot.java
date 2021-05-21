@@ -37,9 +37,7 @@ public class Robot extends TimedRobot {
   private Hopper m_hopper;
   private Intake m_intake;
   private DriveBase m_driveBase;
-
-  public static DriveBase driveBase;
-  public static DriveBaseCommands driveBaseCommands;
+  public DriveBaseCommands driveBaseCommands;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -50,7 +48,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-	  m_driveBase = new DriveBase();
+	m_driveBase = new DriveBase();
     m_shooter = new Shooter(new CANSparkMax(Constants.kLeftShooterId, MotorType.kBrushless), new CANSparkMax(Constants.kRightShooterId, MotorType.kBrushless),new CANSparkMax(Constants.kLiftId,MotorType.kBrushless));
     m_hopper = new Hopper(new CANSparkMax(Constants.kHopperLowerId, MotorType.kBrushless),new CANSparkMax(Constants.kHopperUpperId, MotorType.kBrushless));
     m_intake = new Intake(new CANSparkMax(Constants.kIntakeId, MotorType.kBrushless));
@@ -122,10 +120,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();
-	  double degrees = m_robotContainer.m_robotController.getDirectionDegrees(); // api methods for retrieving info from joystick
-	  double magnitude = m_robotContainer.m_robotController.getMagnitude(); 
-    Scheduler.getInstance().run();
-	
+	driveBaseCommands.start();	
   }
 
   @Override
