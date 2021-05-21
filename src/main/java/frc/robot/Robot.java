@@ -106,6 +106,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    driveCommand.start();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -121,8 +122,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();
-	double degrees = m_robotContainer.m_robotController.getDirectionDegrees(); // api methods for retrieving info from joystick
-	double magnitude = m_robotContainer.m_robotController.getMagnitude(); 
+	  double degrees = m_robotContainer.m_robotController.getDirectionDegrees(); // api methods for retrieving info from joystick
+	  double magnitude = m_robotContainer.m_robotController.getMagnitude(); 
+    Scheduler.getInstance().run();
 	
   }
 
