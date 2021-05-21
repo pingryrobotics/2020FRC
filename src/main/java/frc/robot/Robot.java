@@ -28,7 +28,7 @@ public class Robot extends TimedRobot {
   private final Shooter m_shooter; 
   private final Hopper m_hopper;
   private final Intake m_intake;
-  private final DriveBase driveBase;
+  private final DriveBase m_driveBase;
 
   /**
    * This function is run when the robot is first started up and should be used for any
