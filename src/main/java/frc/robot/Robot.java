@@ -10,6 +10,13 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.ChangeShooterSpeed;
+import frc.robot.commands.ToggleHopper;
+import frc.robot.commands.ToggleIntake;
+import frc.robot.subsystems.DriveBase;
+import frc.robot.subsystems.Hopper;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -25,9 +32,9 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  private final Shooter m_shooter; 
-  private final Hopper m_hopper;
-  private final Intake m_intake;
+  private Shooter m_shooter; 
+  private Hopper m_hopper;
+  private Intake m_intake;
 
   public static DriveBase driveBase;
 
@@ -124,7 +131,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    new ToggleIntake(m_intake);
+    //new ToggleIntake(m_intake);
     new ToggleHopper(m_hopper);
     new ChangeShooterSpeed(m_shooter, 0.2);
   }

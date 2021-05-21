@@ -12,5 +12,5 @@ public class RobotMap {
         frontLeftID = 14,
         frontRightID = 2,
         backLeftID = 13,
-        backRightID = 1
+        backRightID = 1;
 }

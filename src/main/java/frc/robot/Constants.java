@@ -26,7 +26,7 @@ public final class Constants {
     public static final int kHopperLowerId = 29;
     public static final int kHopperUpperId = 30;
     public static final int kLiftId = 28;
-    public static final double kHopperSpeed = .7;
-    public static final double kIntakeSpeed = .8;
+    public static final double kHopperSpeed = 1.0;
+    public static final double kIntakeSpeed = -1.0;
     public static final double kImageCaptureLatency = 11.0 / 1000.0;
 }
