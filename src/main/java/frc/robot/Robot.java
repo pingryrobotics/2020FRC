@@ -10,6 +10,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.ChangeShooterSpeed;
+import frc.robot.commands.MoveRobot;
+import frc.robot.commands.ToggleHopper;
+import frc.robot.commands.ToggleIntake;
+import frc.robot.subsystems.DriveBase;
+import frc.robot.subsystems.Hopper;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -25,10 +33,12 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  private final Shooter m_shooter; 
-  private final Hopper m_hopper;
-  private final Intake m_intake;
-  private final DriveBase m_driveBase;
+  private Shooter m_shooter; 
+  private Hopper m_hopper;
+  private Intake m_intake;
+  private DriveBase m_driveBase;
+
+  public static DriveBase driveBase;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -39,7 +49,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-	m_driveBase = new DriveBase();
+	  m_driveBase = new DriveBase();
     m_shooter = new Shooter(new CANSparkMax(Constants.kLeftShooterId, MotorType.kBrushless), new CANSparkMax(Constants.kRightShooterId, MotorType.kBrushless),new CANSparkMax(Constants.kLiftId,MotorType.kBrushless));
     m_hopper = new Hopper(new CANSparkMax(Constants.kHopperLowerId, MotorType.kBrushless),new CANSparkMax(Constants.kHopperUpperId, MotorType.kBrushless));
     m_intake = new Intake(new CANSparkMax(Constants.kIntakeId, MotorType.kBrushless));
@@ -125,9 +135,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    new ToggleIntake(m_intake);
+    //new ToggleIntake(m_intake);
     new ToggleHopper(m_hopper);
     new ChangeShooterSpeed(m_shooter, 0.2);
-	new MoveRobot(m_driveBase, 0.05, 0.05);
+	  new MoveRobot(m_driveBase, 0.05, 0.05);
   }
 }
